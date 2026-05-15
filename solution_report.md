@@ -1,23 +1,45 @@
 # Part 4: AI Solution Design for a Business Problem
 
-# Task 1: Business Domain
+# Reference Dataset Files Used
 
-## Selected Domain: Healthcare
+The following reference files were provided:
 
-The healthcare industry was selected because medical diagnosis can be improved significantly using AI-powered computer vision systems.
+1. ai_usecase_reference_catalog.csv
+2. business_kpi_sample.csv
+3. data_dictionary.md
+
+The healthcare domain and KPI planning were selected based on these reference files.
 
 ---
 
-# Task 2: Business Problem Definition
+# Task 1: Choose a Business Domain
+
+## Selected Domain: Healthcare
+
+From the reference catalog, the healthcare use case focuses on:
+
+- Medical image triage
+- X-ray image analysis
+- AI-assisted diagnosis
+
+Reference AI task type:
+- Image Classification
+
+Recommended model:
+- CNN or Transfer Learning Model
+
+---
+
+# Task 2: Define the Business Problem
 
 ## Problem Statement
 
-Hospitals receive thousands of medical images daily such as:
-- X-rays
-- CT scans
-- MRI scans
+Hospitals process thousands of X-ray and scan images daily.
 
-Doctors manually analyze these images to detect diseases.
+Doctors manually inspect these images to identify diseases such as:
+- Pneumonia
+- Fractures
+- Tumors
 
 This process is:
 - Time-consuming
@@ -39,29 +61,29 @@ This process is:
 ## Current Manual Process
 
 1. Medical images are captured.
-2. Radiologists manually inspect images.
-3. Reports are generated based on visual analysis.
+2. Radiologists manually inspect scans.
+3. Reports are created based on visual analysis.
 
 ---
 
 ## Limitations of Current Process
 
-- Slow diagnosis
+- Slow diagnosis time
 - Human fatigue
 - Diagnostic inconsistency
-- Limited specialist availability
-- High operational cost
+- Specialist shortage
+- High operational workload
 
 ---
 
-# Task 3: AI Task Type
+# Task 3: Identify the AI Task Type
 
 ## AI Task Type: Image Classification
 
-The solution is classified as an image classification problem because the AI model predicts disease categories from medical images.
+The AI system predicts disease categories from medical images.
 
-Example:
-- Healthy
+Example classes:
+- Normal
 - Pneumonia
 - Tumor
 - Fracture
@@ -70,12 +92,12 @@ Example:
 
 ## Why Image Classification is Suitable
 
-CNN-based image classification models are highly effective in identifying visual patterns in medical images.
-
-They can:
-- Detect abnormalities
+Image classification models can:
+- Detect visual abnormalities
 - Learn image features automatically
-- Improve diagnostic speed and accuracy
+- Improve disease detection speed
+
+CNN-based models perform well on medical image datasets.
 
 ---
 
@@ -83,35 +105,36 @@ They can:
 
 ## Type of Data Needed
 
-Medical image data such as:
-- Chest X-rays
-- MRI scans
+Medical imaging data:
+- X-rays
 - CT scans
+- MRI scans
 
 ---
 
-## Structured or Unstructured Data
+## Data Type
 
-The dataset mainly contains unstructured image data.
+The dataset mainly contains:
+- Unstructured image data
 
 ---
 
 ## Input Features
 
-Input features include:
+Features include:
 - Pixel values
-- Image texture
-- Shape patterns
-- Edges and abnormalities
+- Edges
+- Shapes
+- Texture patterns
 
 ---
 
 ## Target Variable
 
-Disease label or diagnosis category.
+Disease category label.
 
 Example:
-- Normal
+- Healthy
 - Pneumonia
 - Tumor
 
@@ -119,21 +142,21 @@ Example:
 
 ## Data Collection Method
 
-Data may be collected from:
+Data can be collected from:
 - Hospitals
-- Medical imaging centers
+- Imaging centers
 - Public healthcare datasets
 
 ---
 
 ## Data Quality Risks
 
-Possible risks include:
-- Blurry images
+Possible risks:
 - Incorrect labels
-- Class imbalance
+- Blurry images
 - Missing data
-- Low-resolution images
+- Class imbalance
+- Low image quality
 
 ---
 
@@ -141,23 +164,21 @@ Possible risks include:
 
 ## Recommended Model: CNN
 
-A Convolutional Neural Network (CNN) is recommended for this solution.
+A Convolutional Neural Network (CNN) is recommended.
 
 ---
 
 ## Why CNN is Appropriate
 
-CNNs are highly effective for image analysis because they:
-- Automatically extract visual features
-- Detect edges and shapes
-- Reduce manual feature engineering
-- Achieve high image classification accuracy
+CNNs:
+- Automatically extract image features
+- Detect patterns effectively
+- Work well for image classification tasks
 
 ---
 
-## Suggested CNN Architecture
+## Suggested Architecture
 
-Layers:
 1. Convolution Layer
 2. ReLU Activation
 3. Pooling Layer
@@ -184,28 +205,37 @@ The model will be evaluated using:
 
 ## Business Metrics
 
-Business performance indicators:
-- Faster diagnosis time
-- Reduced diagnostic cost
-- Improved patient outcomes
-- Reduced workload for doctors
+Using the KPI reference dataset:
+
+Important KPIs include:
+- Manual processing hours
+- Average resolution time
+- Error rate percentage
+- Customer satisfaction score
+- Monthly processed cases
+
+Expected improvements:
+- Reduced review time
+- Lower diagnostic errors
+- Faster patient treatment
+- Increased operational efficiency
 
 ---
 
 ## Possible Failure Cases
 
-- Incorrect disease prediction
 - False positives
 - False negatives
-- Poor performance on low-quality images
+- Incorrect disease predictions
+- Poor-quality image handling
 
 ---
 
 ## Human Review Process
 
-Doctors and radiologists must review AI-generated predictions before final diagnosis.
+Doctors must validate AI predictions before final diagnosis.
 
-AI should assist humans, not fully replace them.
+AI should assist medical experts, not replace them.
 
 ---
 
@@ -213,25 +243,27 @@ AI should assist humans, not fully replace them.
 
 ## Bias in Data
 
-Biased datasets may reduce accuracy for certain patient groups.
+Biased datasets may reduce performance for certain patient groups.
 
 ---
 
 ## Incorrect Predictions
 
-Wrong predictions may impact patient treatment decisions.
+Wrong predictions may negatively affect treatment decisions.
 
 ---
 
 ## Privacy Concerns
 
-Medical data contains sensitive patient information and must be securely stored.
+Medical data contains sensitive patient information.
+
+Strong security and compliance are required.
 
 ---
 
 ## Over-Reliance on AI
 
-Doctors should not depend entirely on AI systems.
+Healthcare professionals should not fully depend on AI systems.
 
 Human expertise remains essential.
 
@@ -248,7 +280,7 @@ Incorrect predictions may:
 
 ## Human Oversight
 
-Human validation is required before making medical decisions.
+Human validation is mandatory before medical decisions are finalized.
 
 ---
 
@@ -256,21 +288,22 @@ Human validation is required before making medical decisions.
 
 ## Problem
 
-Manual medical image diagnosis is slow and prone to error.
+Manual medical image analysis is slow and prone to error.
 
 ---
 
 ## Proposed AI Solution
 
-A CNN-based image classification system for automated disease detection.
+A CNN-based medical image classification system for disease detection.
 
 ---
 
 ## Required Data
 
-- Medical image datasets
+- X-ray images
+- MRI scans
 - Disease labels
-- Patient diagnosis records
+- Diagnostic records
 
 ---
 
@@ -283,23 +316,23 @@ Convolutional Neural Network (CNN)
 ## Expected Business Impact
 
 - Faster diagnosis
-- Reduced healthcare cost
-- Improved accuracy
-- Better patient care
+- Reduced operational workload
+- Improved healthcare efficiency
+- Better patient outcomes
 
 ---
 
-## Risks and Mitigation Plan
+## Risks and Mitigation
 
 | Risk | Mitigation |
 |------|-------------|
-| Incorrect predictions | Human doctor validation |
-| Data bias | Use diverse datasets |
-| Privacy issues | Secure patient data |
-| Over-reliance on AI | Keep human oversight |
+| Incorrect predictions | Doctor validation |
+| Data bias | Diverse datasets |
+| Privacy concerns | Secure data storage |
+| Over-reliance on AI | Human oversight |
 
 ---
 
 # Conclusion
 
-AI-powered medical image classification systems can significantly improve healthcare efficiency and diagnostic accuracy while supporting doctors in medical decision-making.
+AI-powered medical image classification systems can significantly improve diagnostic efficiency while supporting doctors in healthcare decision-making.
